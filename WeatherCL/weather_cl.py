@@ -3,26 +3,29 @@ import settings_mine
 import requests
 
 
-KELVIN_TEMP = 273.15
-print('Starting')
+KELVIN_OFFSET = 273.15
+API_BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
+
+
+print('Starting ...\n')
 
 api_key = settings_mine.api_key
 # city = 'Seattle'
 state = 'CA'
 
 city = input('Enter city: ') 
-url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + api_key
+url = API_BASE_URL + '?q=' + city + '&appid=' + api_key
 
 request = requests.get(url)
 json = request.json()
 
 # parse data from json
 description = json.get('weather')[0].get('description')
-current_temp_celsius = json.get('main').get('temp') - KELVIN_TEMP
-min_temp_celsius = json.get('main').get('temp_min') - KELVIN_TEMP
-max_temp_celsius = json.get('main').get('temp_max') - KELVIN_TEMP
+current_temp_celsius = json.get('main').get('temp') - KELVIN_OFFSET
+min_temp_celsius = json.get('main').get('temp_min') - KELVIN_OFFSET
+max_temp_celsius = json.get('main').get('temp_max') - KELVIN_OFFSET
 
-# print("min_temp tyep: ", type(min_temp))
+# print("min_temp type: ", type(min_temp))
 
 print("Today's forecast: ", description)
 print("Current temperature: ", round(current_temp_celsius, 2), "C")
