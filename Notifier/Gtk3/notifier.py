@@ -9,7 +9,7 @@ from gi.repository import Notify
 
 class MyWindow(Gtk.Window):
     def __init__(self):
-        Gtk.Window.__init__(self, title="Hello")
+        Gtk.Window.__init__(self, title="Notifier")
         Gtk.Window.set_default_size(self, 640, 480)
         Notify.init("simple GTK3 Application")
 
@@ -22,13 +22,20 @@ class MyWindow(Gtk.Window):
         self.button.connect("clicked", self.handle_btn_clicked)
         self.box.pack_start(self.button, True, True, 0)
 
+        self.lbl = Gtk.Label()
+        self.lbl.set_label("Enter seconds:")
+        self.lbl.set_halign(Gtk.Align.START)
+        self.box.add(self.lbl)
+
         hboxForEntry = Gtk.Box(spacing=6)
         self.entry = Gtk.Entry()
         # self.entry.set_width_chars(8)
         # self.entry.set_size_request(30, 30)
-        self.entry.set_text("seconds")
+        self.entry.set_text("5")
         #self.box.pack_start(self.entry, True, True, 0)
-        hboxForEntry.pack_start(self.entry, True, True, 0)
+        # hboxForEntry.pack_start(self.entry, True, True, 0)
+        hboxForEntry.add(self.entry)
+        self.entry.set_valign(Gtk.Align.START)
         self.box.pack_start(hboxForEntry, True, True, 0)
 
         hbox = Gtk.Box(spacing=6)
@@ -36,7 +43,11 @@ class MyWindow(Gtk.Window):
 
 
     def handle_btn_clicked(self, widget):
-        sec = int(self.entry.get_text())
+        # sec = int(self.entry.get_text())
+        props = self.entry.get_properties('text')
+        print('props text:', props)
+        print('props text:type', type(props))
+        sec = int(props[0])
         print("seconds: ", sec)
         time.sleep(sec)
         n = Notify.Notification.new("My GTK3 Application", "Hello")
