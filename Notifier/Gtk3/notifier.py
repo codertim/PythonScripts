@@ -16,9 +16,9 @@ class MyWindow(Gtk.Window):
         self.box = Gtk.Box(spacing=10, orientation=Gtk.Orientation.VERTICAL)
         self.add(self.box)
 
-        self.button = Gtk.Button(label="click here!")
+        self.button = Gtk.Button(label="Go")
         self.button.set_halign(Gtk.Align.CENTER)
-        self.button.set_valign(Gtk.Align.CENTER)
+        self.button.set_valign(Gtk.Align.END)   # CENTER
         self.button.connect("clicked", self.handle_btn_clicked)
         self.box.pack_start(self.button, True, True, 0)
 
