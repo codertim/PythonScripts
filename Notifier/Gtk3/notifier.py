@@ -38,8 +38,12 @@ class MyWindow(Gtk.Window):
         self.entry.set_valign(Gtk.Align.START)
         self.box.pack_start(hboxForEntry, True, True, 0)
 
-        hbox = Gtk.Box(spacing=6)
+        hbox = Gtk.Box(spacing=2)
         self.box.pack_start(hbox, True, True, 0)
+
+        # spinner
+        self.spinner = Gtk.Spinner()
+        self.box.add(self.spinner)
 
 
     def handle_btn_clicked(self, widget):
@@ -49,7 +53,9 @@ class MyWindow(Gtk.Window):
         print('props text:type', type(props))
         sec = int(props[0])
         print("seconds: ", sec)
+        self.spinner.start()
         time.sleep(sec)
+        self.spinner.stop()
         n = Notify.Notification.new("My GTK3 Application", "Hello")
         n.show()
 
