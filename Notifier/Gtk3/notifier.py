@@ -56,7 +56,7 @@ class MyWindow(Gtk.Window):
         self.spinner.start()
         time.sleep(sec)
         self.spinner.stop()
-        n = Notify.Notification.new("My GTK3 Application", "Hello")
+        n = Notify.Notification.new("Notifier", "Hello")
         n.show()
 
 
