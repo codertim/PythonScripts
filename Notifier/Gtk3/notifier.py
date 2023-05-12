@@ -9,7 +9,7 @@ from gi.repository import Notify
 
 class MyWindow(Gtk.Window):
     def __init__(self):
-        Gtk.Window.__init__(self, title="Notifier")
+        Gtk.Window.__init__(self, title="Message Notifier")
         Gtk.Window.set_default_size(self, 640, 480)
         Notify.init("simple GTK3 Application")
 
@@ -22,9 +22,9 @@ class MyWindow(Gtk.Window):
         self.button.connect("clicked", self.handle_btn_clicked)
         self.box.pack_start(self.button, True, True, 0)
 
-        self.lbl = Gtk.Label()
+        self.lbl = Gtk.Label(angle=1)
         self.lbl.set_label("Enter seconds:")
-        self.lbl.set_halign(Gtk.Align.START)
+        # self.lbl.set_halign(Gtk.Align.CENTER)
         self.box.add(self.lbl)
 
         hboxForEntry = Gtk.Box(spacing=6)
@@ -32,9 +32,11 @@ class MyWindow(Gtk.Window):
         # self.entry.set_width_chars(8)
         # self.entry.set_size_request(30, 30)
         self.entry.set_text("5")
+        print("self entry props: ", dir(self.entry.props))
         #self.box.pack_start(self.entry, True, True, 0)
         # hboxForEntry.pack_start(self.entry, True, True, 0)
         hboxForEntry.add(self.entry)
+        hboxForEntry.set_halign(Gtk.Align.CENTER)
         self.entry.set_valign(Gtk.Align.START)
         self.box.pack_start(hboxForEntry, True, True, 0)
 
@@ -44,6 +46,7 @@ class MyWindow(Gtk.Window):
         # spinner
         self.spinner = Gtk.Spinner()
         self.box.add(self.spinner)
+        # self.box.pack_start(hbox, True, True, 0)
 
 
     def handle_btn_clicked(self, widget):
