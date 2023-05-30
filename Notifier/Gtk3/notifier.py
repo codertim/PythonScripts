@@ -10,7 +10,7 @@ from gi.repository import Notify
 class MyWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Message Notifier")
-        Gtk.Window.set_default_size(self, 640, 480)
+        Gtk.Window.set_default_size(self, 640, 200)
         Notify.init("simple GTK3 Application")
 
         self.box = Gtk.Box(spacing=10, orientation=Gtk.Orientation.VERTICAL)
