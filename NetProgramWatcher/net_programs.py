@@ -1,16 +1,27 @@
 
 import os
+import platform
 import time
 
-print "Starting ..."
+print("Starting ...")
+os_name = platform.system()
+print("OS name: ", os_name)
 
-# results = os.system("lsof -i")
 
 programs = {}
 while 1 == 1:
-  results = os.popen("lsof -i").read()
+  results = ""
+
+  if os_name == "Linux":
+      results = os.popen("lsof -i").read()
+  elif os_name == "Windows":
+      results = os.popen("dir /B").read()
+
+  # print("Results:", results)
+
   i = 0
   for r in results.splitlines():
+      # print("  current line: ", r)
       # if i != 0:
           # print(r)
       cols = r.split()
@@ -18,7 +29,7 @@ while 1 == 1:
       # print("cols[0]", cols[0])
       if cols[0] not in programs:
           programs[cols[0]] = 1
-          print "New program:", cols[0]
+          print("********** New program:", cols[0], "**********")
       i+=1
 
   # print results
