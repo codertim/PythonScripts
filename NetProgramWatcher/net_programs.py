@@ -1,12 +1,21 @@
 
+# this program watches sensitive directories to check if new files were added
+
 import os
 import platform
 import time
+import sys
 
 print("Starting ...")
 os_name = platform.system()
 print("OS name: ", os_name)
 
+print("cl args:", sys.argv)
+
+is_debugging = False
+
+if "debug" in sys.argv:
+    is_debugging = True
 
 programs = {}
 while 1 == 1:
@@ -25,7 +34,8 @@ while 1 == 1:
       # if i != 0:
           # print(r)
       cols = r.split()
-      # print("cols", cols)
+      if is_debugging == True:
+          print("cols", cols)
       # print("cols[0]", cols[0])
       if cols[0] not in programs:
           programs[cols[0]] = 1
@@ -39,6 +49,8 @@ while 1 == 1:
   # for k in programs.keys():
   #     print(k)
 
+  if is_debugging:
+      print("sleeping ...")
   time.sleep(3)
 
 print("Done.")
