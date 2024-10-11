@@ -1,5 +1,5 @@
 
-import re, sys, time, urllib2
+import re, sys, time, urllib.request
 
 
 def get_links():
@@ -19,7 +19,7 @@ def get_links():
       
 
 if len(sys.argv) < 2:
-  print "Missing search term from command line"
+  print("Missing search term from command line")
   sys.exit(1)
 
 search_term = sys.argv[1]
@@ -32,7 +32,7 @@ links = get_links()
 hit_links = []
 
 for link in links:
-  print "  searching link: %s" % link
+  print("  searching link: %s" % link)
   time.sleep(0.3)
   response = urllib2.urlopen(link)
   page = response.read()
@@ -40,15 +40,15 @@ for link in links:
   search_term_match = re.search(search_term, page)
   # print("my_match type = ", type(my_match))
   if search_term_match:
-    print "    Found"
+    print("    Found")
     hit_links.append(link)
   else:
-    print "    Not found"
+    print("    Not found")
 
 
-print "Found search term |%s| in links: " % search_term
+print("Found search term |%s| in links: " % search_term)
 for link in hit_links:
-  print "  %s" % link
+  print("  %s" % link)
 
 
 
