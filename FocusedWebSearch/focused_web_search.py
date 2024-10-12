@@ -5,7 +5,8 @@ import re, sys, time, urllib.request
 def get_links():
   f = open("links.txt", "rb")
   file_content = f.read()
-  lines = file_content.split('\n')
+  print(f'type of file read: {type(file_content)}')
+  lines = file_content.split(b'\n')
   links = []
 
   for line in lines:
