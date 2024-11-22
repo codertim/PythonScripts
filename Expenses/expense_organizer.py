@@ -7,9 +7,11 @@ class Expense:
         self.amount = amount
         self.date = date
 
+
 class ExpenseManager:
     def __init__(self):
         self.expenses = []
+
     def add(self, expense):
         self.expenses.append(expense)
 
@@ -23,9 +25,12 @@ def add_expense(exp_manager):
     exp_manager.add(new_expense)
 
 
-def show_total_expenses():
+def show_total_expenses(expense_manager):
     print('***** show_total_expenses() starting ...')
-
+    total = 0.0
+    for expense in expense_manager.expenses:
+        total += expense.amount
+    print(f'total: {total:.2f}')
 
 def view_expenses():
     print('***** view_expenses() starting ...')
@@ -41,6 +46,7 @@ def main():
     print('expense1: ', expense1.__dict__)
 
     while True:
+        print()
         print('1) add expense')
         print('2) total all expenses')
         print('3) view expenses')
@@ -48,9 +54,10 @@ def main():
         if selection == '1':
             add_expense(expense_manager)
         elif selection == '2':
-            show_total_expenses()
+            show_total_expenses(expense_manager)
         elif selection == '3':
             view_expenses()
+
         print('expenses now size: ', len(expense_manager.expenses))
 
 
