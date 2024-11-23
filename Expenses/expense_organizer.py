@@ -3,10 +3,17 @@ print('Starting ...')
 
 class Expense:
     def __init__(self, description, amount, date):
-        self.description = description
-        self.amount = amount
-        self.date = date
+        self._description = description
+        self._amount = amount
+        self._date = date
 
+    @property
+    def amount(self):
+        return self._amount
+
+    @amount.setter
+    def amount(self, amount):
+        self._amount = amount
 
 class ExpenseManager:
     def __init__(self):
@@ -63,7 +70,8 @@ def main():
             print('\nDone.')
             exit()
 
-        print('expenses now size: ', len(expense_manager.expenses))
+        print('expenses count: ', len(expense_manager.expenses))
+        print()
 
 
 if __name__ == "__main__":
