@@ -57,6 +57,9 @@ def main():
             show_total_expenses(expense_manager)
         elif selection == '3':
             view_expenses()
+        elif selection.lower() == 'q':
+            print('\nDone.')
+            exit()
 
         print('expenses now size: ', len(expense_manager.expenses))
 
