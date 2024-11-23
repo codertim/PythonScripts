@@ -50,6 +50,8 @@ def main():
         print('1) add expense')
         print('2) total all expenses')
         print('3) view expenses')
+        print('q) quit')
+
         selection = input('Enter selection: ')
         if selection == '1':
             add_expense(expense_manager)
