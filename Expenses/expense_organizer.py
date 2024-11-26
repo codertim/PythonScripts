@@ -15,6 +15,10 @@ class Expense:
     def amount(self, amount):
         self._amount = amount
 
+    def __str__(self):
+        return f'amount: {self._amount}'
+
+
 class ExpenseManager:
     def __init__(self):
         self.expenses = []
@@ -33,14 +37,17 @@ def add_expense(exp_manager):
 
 
 def show_total_expenses(expense_manager):
+    """ show total of all expenses """
     print('***** show_total_expenses() starting ...')
     total = 0.0
     for expense in expense_manager.expenses:
         total += expense.amount
     print(f'total: {total:.2f}')
 
-def view_expenses():
+def view_expenses(expense_manager):
     print('***** view_expenses() starting ...')
+    for expense in expense_manager.expenses:
+        print(expense)
 
 
 
@@ -65,7 +72,7 @@ def main():
         elif selection == '2':
             show_total_expenses(expense_manager)
         elif selection == '3':
-            view_expenses()
+            view_expenses(expense_manager)
         elif selection.lower() == 'q':
             print('\nDone.')
             exit()
