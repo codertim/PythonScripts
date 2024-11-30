@@ -19,38 +19,42 @@ def get_links():
   return links
       
 
-if len(sys.argv) < 2:
-  print("Missing search term from command line")
-  sys.exit(1)
+def main():
+  if len(sys.argv) < 2:
+    print("Missing search term from command line")
+    sys.exit(1)
 
-search_term = sys.argv[1]
-print("Search term: ", search_term)
-
-
-links = get_links()
-# print('***** Links from file: ', links)
-
-hit_links = []
-
-for link in links:
-  print("  searching link: %s" % link)
-  time.sleep(0.3)
-  response = urllib2.urlopen(link)
-  page = response.read()
-  # print("page = " + page)
-  search_term_match = re.search(search_term, page)
-  # print("my_match type = ", type(my_match))
-  if search_term_match:
-    print("    Found")
-    hit_links.append(link)
-  else:
-    print("    Not found")
+  search_term = sys.argv[1]
+  print("Search term: ", search_term)
 
 
-print("Found search term |%s| in links: " % search_term)
-for link in hit_links:
-  print("  %s" % link)
+  links = get_links()
+  # print('***** Links from file: ', links)
 
+  hit_links = []
+
+  for link in links:
+    print("  searching link: %s" % link)
+    time.sleep(0.3)
+    response = urllib2.urlopen(link)
+    page = response.read()
+    # print("page = " + page)
+    search_term_match = re.search(search_term, page)
+    # print("my_match type = ", type(my_match))
+    if search_term_match:
+      print("    Found")
+      hit_links.append(link)
+    else:
+      print("    Not found")
+
+
+  print("Found search term |%s| in links: " % search_term)
+  for link in hit_links:
+    print("  %s" % link)
+
+
+if __name__ == "__main__":
+  main()
 
 
 
