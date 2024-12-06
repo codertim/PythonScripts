@@ -1,4 +1,7 @@
 
+import decimal
+
+
 print('Starting ...')
 
 class Expense:
@@ -29,7 +32,7 @@ class ExpenseManager:
 
 def add_expense(exp_manager):
     print('***** add_expense() starting ... ')
-    amount = float(input('  amount: '))
+    amount = decimal.Decimal(input('  amount: '))
     desc = input('description: ')
     date_str = input('date: ')
     new_expense = Expense(desc, amount, date_str)
@@ -39,7 +42,7 @@ def add_expense(exp_manager):
 def show_total_expenses(expense_manager):
     """ show total of all expenses """
     print('***** show_total_expenses() starting ...')
-    total = 0.0
+    total = decimal.Decimal('0.00')
     for expense in expense_manager.expenses:
         total += expense.amount
     print(f'total: {total:.2f}')
