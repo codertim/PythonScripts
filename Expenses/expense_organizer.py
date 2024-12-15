@@ -4,6 +4,7 @@ import decimal
 
 print('Starting ...')
 
+
 class Expense:
     def __init__(self, description, amount, date):
         self._description = description
@@ -31,6 +32,7 @@ class ExpenseManager:
 
 
 def add_expense(exp_manager):
+    """ get expense details from user and add expense """
     print('***** add_expense() starting ... ')
     amount = decimal.Decimal(input('  amount: '))
     desc = input('description: ')
@@ -47,7 +49,9 @@ def show_total_expenses(expense_manager):
         total += expense.amount
     print(f'total: {total:.2f}')
 
+
 def view_expenses(expense_manager):
+    """ show all expenses """
     print('***** view_expenses() starting ...')
     for expense in expense_manager.expenses:
         print(expense)
@@ -88,5 +92,5 @@ if __name__ == "__main__":
     main()
 
 
-print('Done')
+print('Done.')
 
