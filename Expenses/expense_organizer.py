@@ -1,7 +1,9 @@
 
 import decimal
+import sys
 
 
+DEBUG = False
 print('Starting ...')
 
 
@@ -33,7 +35,8 @@ class ExpenseManager:
 
 def add_expense(exp_manager):
     """ get expense details from user and add expense """
-    print('***** add_expense() starting ... ')
+    if DEBUG == True:
+        print('***** add_expense() starting ... ')
     amount = decimal.Decimal(input('  amount: '))
     desc = input('description: ')
     date_str = input('date: ')
@@ -43,7 +46,8 @@ def add_expense(exp_manager):
 
 def show_total_expenses(expense_manager):
     """ show total of all expenses """
-    print('***** show_total_expenses() starting ...')
+    if DEBUG == True:
+        print('***** show_total_expenses() starting ...')
     total = decimal.Decimal('0.00')
     for expense in expense_manager.expenses:
         total += expense.amount
@@ -52,16 +56,26 @@ def show_total_expenses(expense_manager):
 
 def view_expenses(expense_manager):
     """ show all expenses """
-    print('***** view_expenses() starting ...')
+    if DEBUG==True:
+        print('***** view_expenses() starting ...')
     for expense in expense_manager.expenses:
         print(expense)
 
 
 
 def main():
-    print('***** main() staarting ...')
+    if '--debug' in sys.argv:
+        DEBUG = True
+    else:
+        DEBUG = False
+
+    if DEBUG == True:
+        print('***** main() starting ...')
+        print('  sys.argv:', sys.argv)
+
     expense1 = Expense('food', 2.99, '2023-07-04')
     expense_manager= ExpenseManager()
+
 
     print('expense_manager: ', expense_manager.__dict__)
     print('expense1: ', expense1.__dict__)
