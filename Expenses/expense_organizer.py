@@ -77,8 +77,9 @@ def main():
     expense_manager= ExpenseManager()
 
 
-    print('expense_manager: ', expense_manager.__dict__)
-    print('expense1: ', expense1.__dict__)
+    if DEBUG == True:
+        print('expense_manager __dict__: ', expense_manager.__dict__)
+        print('expense test __dict__: ', expense1.__dict__)
 
     while True:
         print()
