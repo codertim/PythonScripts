@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 
 print('\nStarting ...')
 
-url = 'https://www.arstechnica.com'
+# url = 'https://www.arstechnica.com'
+url = input('Enter url: ')
 
 response = requests.get(url)
 
