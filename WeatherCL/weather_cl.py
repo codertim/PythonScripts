@@ -14,6 +14,7 @@ print('type for settings_min:', type(settings_mine))
 
 def main():
     api_key = settings_mine.api_key
+    print('api_key: {api_key[0:5]}')
     # city = 'Seattle'
     state = 'CA'
 
@@ -37,7 +38,7 @@ def main():
     print("High: ", round(max_temp_celsius, 2), "C")
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     main()
 
 
