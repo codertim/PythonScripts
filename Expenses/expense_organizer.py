@@ -8,10 +8,11 @@ print('Starting ...')
 
 
 class Expense:
-    def __init__(self, description, amount, date):
+    def __init__(self, description, amount, date, category=''):
         self._description = description
         self._amount = amount
         self._date = date
+        self._category = category
 
     @property
     def amount(self):
@@ -20,6 +21,10 @@ class Expense:
     @amount.setter
     def amount(self, amount):
         self._amount = amount
+
+    @amount.deleter
+    def amount(self):
+        self._amount = None
 
     def __str__(self):
         return f'amount: {self._amount}'
