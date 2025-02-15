@@ -1,20 +1,24 @@
 
 import settings_mine
+import sys
 import requests
 
 
 KELVIN_OFFSET = 273.15
 API_BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
+debug = False
 
 
 print('Starting ...\n')
 print('settings_mine:', settings_mine)
 print('type for settings_min:', type(settings_mine))
-
+print('sys.argv:', sys.argv)
+if '-d' in sys.argv:
+    debug = True
 
 def main():
     api_key = settings_mine.api_key
-    print('api_key: {api_key[0:5]}')
+    print('first digits of api_key: {api_key[0:5]}')
     # city = 'Seattle'
     state = 'CA'
 
@@ -23,6 +27,9 @@ def main():
 
     request = requests.get(url)
     json = request.json()
+    if debug:
+        print('json:', json)
+    print('json message:', json.get('message'))
 
     # parse data from json
     description = json.get('weather')[0].get('description')
