@@ -1,17 +1,31 @@
 
 import random
+import sys
 
 
 def main():
     print("Starting ...")
+    print('sys.argv:', sys.argv)
+    num_passwords = 1
+
+    # check how many passwords to generate from command line
+    if '-n' in sys.argv:
+        idx = sys.argv.index('-n')
+        idx += 1
+        num_passwords = int(sys.argv[idx])
+
     potential_chars = get_potential_vals()
     # print("potentail chars: ", potential_chars)
     num_chars = 10
     num_chars_str = input('Enter number of characters: ')
     if num_chars_str:
         num_chars = int(num_chars_str)
-    pword = generate_password(potential_chars, num_chars)
-    print(f'Pword: {pword}')
+
+    print(f'Generating {num_passwords} passwords with {num_chars} characters ...')
+    for _ in range(num_passwords):
+        pword = generate_password(potential_chars, num_chars)
+        print(f'  {pword}')
+
     print("Done.")
 
 
