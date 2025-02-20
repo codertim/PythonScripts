@@ -43,8 +43,8 @@ def add_expense(exp_manager):
     if DEBUG == True:
         print('***** add_expense() starting ... ')
     amount = decimal.Decimal(input('  amount: '))
-    desc = input('description: ')
-    date_str = input('date: ')
+    desc = input('  description: ')
+    date_str = input('  date: ')
     new_expense = Expense(desc, amount, date_str)
     exp_manager.add(new_expense)
 
@@ -56,7 +56,7 @@ def show_total_expenses(expense_manager):
     total = decimal.Decimal('0.00')
     for expense in expense_manager.expenses:
         total += expense.amount
-    print(f'total: {total:.2f}')
+    print(f'\ntotal: {total:.2f}')
 
 
 def view_expenses(expense_manager):
@@ -93,7 +93,7 @@ def main():
         print('3) view expenses')
         print('q) quit')
 
-        selection = input('Enter selection: ')
+        selection = input('\nEnter selection: ')
         if selection == '1':
             add_expense(expense_manager)
         elif selection == '2':
@@ -104,7 +104,7 @@ def main():
             print('\nDone.')
             exit()
 
-        print('expenses count: ', len(expense_manager.expenses))
+        print('\n  item count: ', len(expense_manager.expenses))
         print()
 
 
