@@ -27,7 +27,7 @@ class Expense:
         self._amount = None
 
     def __str__(self):
-        return f'amount: {self._amount}'
+        return f'  expense amount: {self._amount}'
 
 
 class ExpenseManager:
@@ -61,6 +61,7 @@ def show_total_expenses(expense_manager):
 
 def view_expenses(expense_manager):
     """ show all expenses """
+    print("\nAll expenses ...")
     if DEBUG==True:
         print('***** view_expenses() starting ...')
     for expense in expense_manager.expenses:
