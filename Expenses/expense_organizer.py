@@ -59,13 +59,15 @@ def show_total_expenses(expense_manager):
     print(f'\ntotal: {total:.2f}')
 
 
-def view_expenses(expense_manager):
+def view_all_expenses(expense_manager):
     """ show all expenses """
     print("\nAll expenses ...")
     if DEBUG==True:
         print('***** view_expenses() starting ...')
     for expense in expense_manager.expenses:
         print(expense)
+    if len(expense_manager.expenses) == 0:
+        print('  No expenses found')
 
 
 
@@ -90,8 +92,8 @@ def main():
     while True:
         print()
         print('1) add expense')
-        print('2) total all expenses')
-        print('3) view expenses')
+        print('2) total expenses')
+        print('3) view all expenses')
         print('q) quit')
 
         selection = input('\nEnter selection: ')
@@ -100,7 +102,7 @@ def main():
         elif selection == '2':
             show_total_expenses(expense_manager)
         elif selection == '3':
-            view_expenses(expense_manager)
+            view_all_expenses(expense_manager)
         elif selection.lower() == 'q':
             print('\nDone.')
             exit()
