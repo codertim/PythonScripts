@@ -15,6 +15,10 @@ class Expense:
         self._category = category
 
     @property
+    def description(self):
+        return self._description
+
+    @property
     def amount(self):
         return self._amount
 
@@ -70,6 +74,14 @@ def view_all_expenses(expense_manager):
         print('  No expenses found')
 
 
+def save(expense_manager):
+    """ save expenses """
+    print("\nSaving ... ")
+    with open('my_expenses.txt', 'w') as expenses_file:
+        for expense in expense_manager.expenses:
+            expenses_file.write(f'{expense.amount},{expense.description}\n')
+    print("\n  saving done")
+
 
 def main():
     if '--debug' in sys.argv:
@@ -94,6 +106,7 @@ def main():
         print('1) add expense')
         print('2) total expenses')
         print('3) view all expenses')
+        print('4) save')
         print('q) quit')
 
         selection = input('\nEnter selection: ')
@@ -103,6 +116,8 @@ def main():
             show_total_expenses(expense_manager)
         elif selection == '3':
             view_all_expenses(expense_manager)
+        elif selection == '4':
+            save(expense_manager)
         elif selection.lower() == 'q':
             print('\nDone.')
             exit()
