@@ -22,6 +22,10 @@ class Expense:
     def amount(self):
         return self._amount
 
+    @property
+    def date(self):
+        return self._date
+
     @amount.setter
     def amount(self, amount):
         self._amount = amount
@@ -79,7 +83,10 @@ def save(expense_manager):
     print("\nSaving ... ")
     with open('my_expenses.txt', 'w') as expenses_file:
         for expense in expense_manager.expenses:
-            expenses_file.write(f'{expense.amount},{expense.description}\n')
+            expenses_file.write(f'{expense.amount},')
+            expenses_file.write(f'{expense.description}')
+            expenses_file.write(f'{expense.date},')
+            expenses_file.write('\n')
     print("\n  saving done")
 
 
