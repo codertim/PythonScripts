@@ -80,8 +80,11 @@ def view_all_expenses(expense_manager):
 
 def save(expense_manager):
     """ save expenses """
+    file_name = input('Enter name of file: [my_expenses.txt]')
+    if file_name == '':
+        file_name = 'my_expenses.txt'
     print("\nSaving ... ")
-    with open('my_expenses.txt', 'w') as expenses_file:
+    with open(file_name, 'w') as expenses_file:
         for expense in expense_manager.expenses:
             expenses_file.write(f'{expense.amount},')
             expenses_file.write(f'{expense.description}')
