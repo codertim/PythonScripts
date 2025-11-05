@@ -103,11 +103,12 @@ def main():
         print('***** main() starting ...')
         print('  sys.argv:', sys.argv)
 
-    expense1 = Expense('food', 2.99, '2023-07-04')
+    expense_debug1 = Expense('food', 2.99, '2023-07-04')
     expense_manager= ExpenseManager()
 
 
     if DEBUG == True:
+        print('expense_debug1 __dict__: ', expense_debug1.__dict__)
         print('expense_manager __dict__: ', expense_manager.__dict__)
         print('expense test __dict__: ', expense1.__dict__)
 
